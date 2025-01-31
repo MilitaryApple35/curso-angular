@@ -1,0 +1,62 @@
+<div class="columns-2xxl">
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-3 text-black">
+    <div class="bg-white rounded shadow p-10">
+      <h2 class="text-2xl font-bold mb-5">If : {{ showContent() }}</h2>
+
+      <button class="p-2 bg-blue-500 rounded text-white" (click)="toggleContent()">
+        Click me!
+      </button>
+
+      @if(showContent()) {
+        <div class="bg-white shadow rounded p-10">
+          <h2 class="text-2xl font-bold mb-5">Hola mundo</h2>
+        </div>
+      }@else {
+        <div class="bg-white shadow rounded p-10">
+          <h2 class="text-2xl font-bold mb-5">**** *****</h2>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-3 text-black">
+    <div class="bg-white rounded shadow p-10">
+
+      <h2 class="text-2xl font-bold mb-1">Switch : {{ grade() }}</h2>
+      <div class="mb-5">
+        @switch (grade()) {
+         @case('A'){
+           <p>Arriba de 90</p>
+         }
+         @case('B'){
+           <p>Arriba de 80</p>
+         }
+         @case('F'){
+           <p>Reprobado</p>
+         }
+        }
+      </div>
+      <button (click)="switchGrade()" class="p-2 bg-blue-500 rounded text-white">Cambiar calificacion</button>
+
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-3 text-black">
+    <div class="bg-white rounded shadow p-10">
+
+      <div class="flex place-content-center flex-row gap-8 columns-2m">
+        <ul class="w-50">
+          @for (framework of frameworks(); track $index) {
+            <li>{{ framework }}</li><span><button (click)="toRight(framework)" class="bg-blue-500 rounded text-white">-></button></span>
+          }
+        </ul>
+
+        <ul class="w-50">
+          @for (framework of frameworks2(); track $index) {
+            <li>{{ framework }}</li><span><button (click)="toLeft(framework)" class="bg-blue-500 rounded text-white"><-</button></span>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
